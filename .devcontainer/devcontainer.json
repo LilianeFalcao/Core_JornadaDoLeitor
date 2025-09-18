@@ -11,6 +11,7 @@
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "styled-components.vscode-styled-components",
-        "pkief.material-icon-theme"
+        "pkief.material-icon-theme",
+        "oderwat.indent-rainbow"
     ]
 }
