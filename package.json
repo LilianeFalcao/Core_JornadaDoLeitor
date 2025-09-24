@@ -1,5 +1,5 @@
 {
-  "name": "dockerweb",
+  "name": "package-lock.json",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,13 @@
     "jest": "^30.1.3",
     "ts-jest": "^29.4.4",
     "typescript": "^5.9.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LilianeFalcao/confi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LilianeFalcao/confi/issues"
+  },
+  "homepage": "https://github.com/LilianeFalcao/confi#readme"
 }
