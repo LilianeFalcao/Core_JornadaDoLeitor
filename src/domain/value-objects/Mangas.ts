@@ -26,8 +26,8 @@ export class Mangas{
         return true;
     }
 
-    private static validateUrl(url: string): boolean{
-        return /^https?:\/\/.+\.(jpg|jpeg|png|gif)$/.test(url);
+    private static validateUrl(img_URL: string): boolean{
+        return /^https?:\/\/.+\.(jpg|jpeg|png|gif)$/.test(img_URL);
     }
 
     private static validateTotalCap(total_capitulos: number): boolean{

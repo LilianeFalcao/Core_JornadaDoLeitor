@@ -1,10 +1,9 @@
 export class Senha {
     private constructor(readonly value: string) { }
 
-    static create(senha: string): Senha | undefined {
-        if (this.validate(senha)) {
-            return new Senha(senha)
-        }
+    static create(senha: string): Senha {
+        this.validate(senha)
+        return new Senha(senha)
     }
 
     private static validate(senha: string): boolean {
