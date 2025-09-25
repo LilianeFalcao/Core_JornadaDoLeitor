@@ -1,5 +1,3 @@
-import { UltimaAtualizacao } from "../../../domain/value-objects/UltimaAtualizacao";
-import { CapituloAtual } from "../../../domain/value-objects/CapituloAtual";
 import { Leituras } from "../../../domain/entity/Leituras";
 
 describe ('Leituras', () => {

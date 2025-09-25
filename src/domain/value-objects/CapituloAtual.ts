@@ -11,4 +11,5 @@ export class CapituloAtual {
     private static validate(value: number): boolean {
         return value >= 0;
     }
+
 }
