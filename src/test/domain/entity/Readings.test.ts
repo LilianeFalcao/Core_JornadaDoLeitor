@@ -1,4 +1,4 @@
-import { Readings } from "../../../domain/entity/Readings";
+import { Reading_Status, Readings } from "../../../domain/entity/Readings";
 
 describe ('Readings', () => {
     it("should create a valid readings", () => {
@@ -10,14 +10,18 @@ describe ('Readings', () => {
             'manga-24',
             start_date,
             25,
-            15
+            15,
+            Reading_Status.READING,
+            'Muito engraçado'
         );
 
         expect(reading.id).toBe('1');
         expect(reading.id_user).toBe('user-1');
         expect(reading.id_manga).toBe('manga-24');
-        expect(reading.start_date).toBe(start_date);
+        expect(reading.start_date).toEqual(start_date);
         expect(reading.last_update).toBe(25);
         expect(reading.current_chapter).toBe(15);
+        expect(reading.status).toBe(Reading_Status.READING);
+        expect(reading.notes).toBe('Muito engraçado')
     })
 })
