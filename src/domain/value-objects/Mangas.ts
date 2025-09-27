@@ -2,21 +2,21 @@ export class Mangas{
     private constructor (
         readonly value: string,
         readonly img_URL: string,
-        readonly total_capitulos: number
+        readonly total_chapters: number
     ) {   }
 
-    static create(mangas: string, img_URL:string, total_capitulos: number): Mangas {
+    static create(mangas: string, img_URL:string, total_chapters: number): Mangas {
         if (!this.validateManga(mangas)) {
-            throw new Error("Título da Obra é Inválido.");
+            throw new Error("Manga title is invalid.");
         }
         if(!this.validateUrl(img_URL)) {
-            throw new Error("A Url da imagem passada é Inválida");
+            throw new Error("The URL of the passed image is invalid.");
         }
 
-        if(!this.validateTotalCap(total_capitulos) ) {
-            throw new Error ("Capítulo passado não é válido")
+        if(!this.validateTotalCap(total_chapters) ) {
+            throw new Error ("Past chapter is not valid.")
         }
-        return new Mangas(mangas, img_URL, total_capitulos);
+        return new Mangas(mangas, img_URL, total_chapters);
     }
 
     private static validateManga(mangas: string): boolean{
@@ -30,7 +30,7 @@ export class Mangas{
         return /^https?:\/\/.+\.(jpg|jpeg|png|gif)$/.test(img_URL);
     }
 
-    private static validateTotalCap(total_capitulos: number): boolean{
-        return total_capitulos >= 0
+    private static validateTotalCap(total_chapters: number): boolean{
+        return total_chapters >= 0
     }
 }

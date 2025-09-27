@@ -1,5 +1,5 @@
 import { Email } from "../../../domain/value-objects/Email";
-import { Senha } from "../../../domain/value-objects/Senha";
+import { Password } from "../../../domain/value-objects/Password";
 //Entities
 import { User } from "../../../domain/entity/User";
 
@@ -10,7 +10,7 @@ describe('User', () => {
             '1',
             "Hawks",
             Email.create("linnYohan@gmail.com"),
-            Senha.create ('P@ssword1'),
+            Password.create ('P@ssword1'),
         );
 
         expect(user.id).toBe('1');

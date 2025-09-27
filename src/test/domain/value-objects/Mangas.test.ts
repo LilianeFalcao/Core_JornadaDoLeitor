@@ -1,39 +1,39 @@
 import { Mangas } from "../../../domain/value-objects/Mangas";
 
 describe("Mangas", () => {
-    it("Adicionar título válido", () => {
+    it("Add valid title.", () => {
         const mangas = Mangas.create("One Piece", "https://site.com/onepiece.jpg", 2);
         expect(mangas.value).toBe("One Piece");
     });
 
-    it("Adicionar URL válida", () => {
+    it("Add valid URL", () => {
         const mangas = Mangas.create("One Piece", "https://site.com/onepiece.jpg", 2);
         expect(mangas.img_URL).toBe("https://site.com/onepiece.jpg");
     });
 
-    it("Não permite título inválido", () => {
+    it("Does not allow invalid title", () => {
         expect(() => Mangas.create("", "https://site.com/onepiece.jpg", 2))
-            .toThrow("O título do mangá é inválido.");
+            .toThrow("The manga title is invalid.");
     });
 
-    it("Não permite URL inválida", () => {
+    it("Does not allow invalid URL", () => {
         expect(() => Mangas.create("Naruto", "invalid-url", 2))
-            .toThrow("A URL da imagem é inválida.");
+            .toThrow("Image URL is invalid..");
     });
     
-    it("Título vazio, por favor, preencher o campo", () => {
+    it("Empty title, please fill in the field", () => {
         expect(() => Mangas.create("          ", "https://site.com/onepiece.jpg", 2))
-            .toThrow("Título da Obra é inválido.");
+            .toThrow("The manga title is invalid.");
     });
-    it("Não permite título muito longo", () => {
+    it("Does not allow very long title", () => {
         const longTitle = "a".repeat(201);
         expect(() => Mangas.create(longTitle, "https://site.com/onepiece.jpg", 2))
-            .toThrow("O nome da obra é inválido.");
+            .toThrow("The manga title is invalid.");
     });
 
-    it("Número de cápitulos não pode ser menor que zero", () => {
+    it("Number of chapters cannot be less than zero", () => {
         expect(() => Mangas.create("Naruto", "https://site.com/onepiece.jpg", -2 ))
-            .toThrow("Quantidade de cápitulos inválido");
+            .toThrow("Invalid number of chapters");
     });
 
 });

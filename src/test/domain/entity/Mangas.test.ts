@@ -15,9 +15,9 @@ describe ('Mangas' , () => {
         
         expect(manga.id).toBe('1');
         expect(manga.img_URL).toBe(url);
-        expect(manga.titulo).toBe('Vinland Saga');
-        expect(manga.nome_autor).toBe('Makoto Yukimura');
-        expect(manga.genero).toBe('Seinen');
-        expect(manga.total_capitulos).toBe(220);
+        expect(manga.title).toBe('Vinland Saga');
+        expect(manga.author_name).toBe('Makoto Yukimura');
+        expect(manga.gender).toBe('Seinen');
+        expect(manga.total_chapters).toBe(220);
     })
 })
