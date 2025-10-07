@@ -8,10 +8,10 @@ export class Readings{
         readonly id_user: string,
         readonly id_manga: string,
         readonly start_date: Date,
-        readonly last_update: number,
-        readonly current_chapter: number,
-        readonly status: Reading_Status,
-        readonly notes: string
+        private _current_chapter: number,
+        private _progress: number,
+        private _status: Reading_Status,
+        private _notes: string
 
     ){  }
     static create(
@@ -19,14 +19,29 @@ export class Readings{
         id_user: string,
         id_manga: string,
         start_date: Date,
-        last_update: number,
         current_chapter: number,
-        status: Reading_Status.READING,
+        progress: number,
+        status: Reading_Status,
         notes: string
 
     ): Readings {
         return new Readings(
             id, id_user, id_manga, start_date, 
-            last_update, current_chapter, status, notes)
+            current_chapter, progress, status, notes)
+    }
+    
+    get current_chapter() { return this._current_chapter; }
+    get progress() { return this._progress; }
+    get status() { return this._status; }
+    get notes() { return this._notes; }
+
+    updateProgress(current_chapter: number, progress: number, status: Reading_Status) {
+        this._current_chapter = current_chapter;
+        this._progress = progress;
+        this._status = status;
+    }
+
+    updateNotes(notes: string) {
+        this._notes = notes;
     }
 }

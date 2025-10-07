@@ -35,6 +35,10 @@ export class MockMangasRepository implements IMangasRepository{
         )
     }
 
+    async findById(id: string): Promise<Mangas | null> {
+        return this.mangas.find(manga => manga.id === id) || null;
+    }
+
     async findByTitle(title: string): Promise<Mangas | null> {
         const manga = this.mangas.find(
             (m) => m.title === title

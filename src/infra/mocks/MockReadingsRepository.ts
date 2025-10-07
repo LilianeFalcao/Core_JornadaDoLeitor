@@ -34,5 +34,13 @@ export class MockReadingsRepository implements IReadingsRepository {
             (reading) => reading.status === status
         )
     }
+
+    async findByUserAndManga(id_manga: string, id_user: string): Promise<Readings | null>{
+        const reading = this.readings.find(
+            (r) => r.id_user === id_user && r.id_manga === id_manga
+        );
+
+        return reading || null;
+    }
     
 }

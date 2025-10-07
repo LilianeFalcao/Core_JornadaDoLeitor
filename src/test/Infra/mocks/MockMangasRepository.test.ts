@@ -7,6 +7,14 @@ describe ('MockMangasRepository', () => {
         repo = new MockMangasRepository();
     })
 
+    it("must return manga by Id", async () => {
+        const result = await repo.findById('1')
+
+        expect(result).toBeDefined(); 
+        expect(result?.id).toBe("1"); 
+        expect(result?.title).toBe("Vinland Saga");
+    })
+
     it("must return manga by the author", async () => {
     const result = await repo.findByAuthorName("Makoto Yukimura");
 
