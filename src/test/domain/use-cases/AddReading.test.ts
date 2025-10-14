@@ -72,4 +72,46 @@ describe("Add reading", () => {
             })
         ).rejects.toThrow("Manga not found");
     });
+
+
+    it("should update an existing reading if it already exists", async () => {
+    const readingRepository = MockReadingsRepository.getInstance();
+    const userRepository = MockUserRepository.getInstance();
+    const mangaRepository = MockMangasRepository.getInstance();
+
+    const addReading = new AddReading(
+        readingRepository,
+        userRepository,
+        mangaRepository
+    );
+
+    const userId = "user_1";
+    const mangaId = "1";
+
+    const initialReading = Readings.create(
+        "existing_id",
+        userId,
+        mangaId,
+        new Date(),
+        10,
+        (10 / 220) * 100,
+        Reading_Status.READING,
+        "Primeira nota"
+    );
+    await readingRepository.save(initialReading);
+    
+    const updatedReading = await addReading.execute({
+        id_user: userId,
+        id_manga: mangaId,
+        current_chapter: 50,
+        notes: "Atualizado!"
+    });
+
+    expect(updatedReading.id).toBe("existing_id"); 
+    expect(updatedReading.current_chapter).toBe(50);
+    expect(updatedReading.progress).toBeCloseTo((50 / 220) * 100, 2);
+    expect(updatedReading.notes).toBe("Atualizado!");
+    expect(updatedReading.status).toBe(Reading_Status.READING);
+});
+
 });
