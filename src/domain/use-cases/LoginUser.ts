@@ -6,9 +6,9 @@ export class LoginUser {
 
     async execute(params: {
         email: string;
-        senha: string
+        password: string
     }): Promise<User>{
-        const {email, senha} = params;
+        const {email, password} = params;
 
         const user = await this.userRepository.findByEmail(email);
 
@@ -17,8 +17,8 @@ export class LoginUser {
         }
 
         const isPasswordValid = await this.comparePassword(
-            senha,
-            user.senha.value
+            password,
+            user.password.value
             );
 
             if (!isPasswordValid) {
@@ -29,10 +29,10 @@ export class LoginUser {
         }
 
         private async comparePassword(
-            senha: string,
+            password: string,
             hashedPassword: string
         ): Promise<boolean> {
-            return `hashed_${senha}` === hashedPassword;
+            return `hashed_${password}` === hashedPassword;
         }
 
 }

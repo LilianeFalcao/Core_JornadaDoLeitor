@@ -2,9 +2,9 @@ import { DeleteUser } from '../../../domain/use-cases/DeleteUser';
 import { RegisterUser } from '../../../domain/use-cases/RegisterUser';
 import { MockUserRepository } from '../../../infra/mocks/MockUserRepository';
 
-describe('DeleteUser', () => {
+describe('Delete User', () => {
     it('should delete a user', async () => {
-        const userRepository = new MockUserRepository();
+        const userRepository = MockUserRepository.getInstance();
         const registerUser = new RegisterUser(userRepository);
         const deleteUser = new DeleteUser(userRepository);
 
@@ -22,7 +22,7 @@ describe('DeleteUser', () => {
     });
 
     it('should throw an error if the user is not found', async () => {
-        const userRepository = new MockUserRepository();
+        const userRepository = MockUserRepository.getInstance();
         const deleteUser = new DeleteUser(userRepository);
 
         await expect(deleteUser.execute({ id: '1' })).rejects.toThrow('User not found');

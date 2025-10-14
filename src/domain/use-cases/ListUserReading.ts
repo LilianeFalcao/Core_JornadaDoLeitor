@@ -7,7 +7,6 @@ export class ListUserReading {
     async execute(params: { id_user: string }): Promise<Readings[]> {
         const { id_user } = params;
 
-        // Busca todas as leituras do usuário
         const readings = await this.readingRepository.findByUserId(id_user);
 
         if (!readings || readings.length === 0) {

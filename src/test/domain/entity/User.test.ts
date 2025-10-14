@@ -17,6 +17,6 @@ describe('User', () => {
         expect(user.id).toBe('1');
         expect(user.nickname.value).toBe("Hawks");
         expect(user.email.value).toBe('linnYohan@gmail.com');
-        expect(user.senha.value).toBe('P@ssword1');
+        expect(user.password.value).toBe('P@ssword1');
     });
 });

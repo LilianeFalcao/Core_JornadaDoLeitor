@@ -4,7 +4,7 @@ import { MockUserRepository } from '../../../infra/mocks/MockUserRepository';
 
 describe('FindUser', () => {
     it('should find a user by id', async () => {
-        const userRepository = new MockUserRepository();
+        const userRepository = MockUserRepository.getInstance();
         const registerUser = new RegisterUser(userRepository);
         const findUser = new FindUser(userRepository);
 
@@ -20,7 +20,7 @@ describe('FindUser', () => {
     });
 
     it('should return null if the user is not found', async () => {
-        const userRepository = new MockUserRepository();
+        const userRepository = MockUserRepository.getInstance();
         const findUser = new FindUser(userRepository);
 
         const foundUser = await findUser.execute({ id: '1' });

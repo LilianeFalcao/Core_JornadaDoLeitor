@@ -4,7 +4,7 @@ import { MockUserRepository } from '../../../infra/mocks/MockUserRepository';
 
 describe('UpdateUser', () => {
     it('should update a user', async () => {
-        const userRepository = new MockUserRepository();
+        const userRepository = MockUserRepository.getInstance();
         const registerUser = new RegisterUser(userRepository);
         const updateUser = new UpdateUser(userRepository);
 
@@ -23,7 +23,7 @@ describe('UpdateUser', () => {
     });
 
     it('should throw an error if the user is not found', async () => {
-        const userRepository = new MockUserRepository();
+        const userRepository = MockUserRepository.getInstance();
         const updateUser = new UpdateUser(userRepository);
 
         await expect(
@@ -35,7 +35,7 @@ describe('UpdateUser', () => {
     });
 
     it('should update only the email', async () => {
-        const userRepository = new MockUserRepository();
+        const userRepository = MockUserRepository.getInstance();
         const registerUser = new RegisterUser(userRepository);
         const updateUser = new UpdateUser(userRepository);
 

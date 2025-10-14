@@ -1,5 +1,8 @@
 import { MockReadingsRepository } from "../../../infra/mocks/MockReadingsRepository";
-import { Reading_Status, Readings } from "../../../domain/entity/Readings";
+import { 
+    Reading_Status,
+    Readings
+} from "../../../domain/entity/Readings";
 
 describe ('MockReadingsRepository', () => {
     it ("should not update a non-existent reading" , async () => {

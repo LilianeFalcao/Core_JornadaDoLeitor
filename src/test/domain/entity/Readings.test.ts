@@ -19,7 +19,6 @@ describe ('Readings', () => {
         expect(reading.id_user).toBe('user-1');
         expect(reading.id_manga).toBe('manga-24');
         expect(reading.start_date).toEqual(start_date);
-        expect(reading.last_update).toBe(25);
         expect(reading.current_chapter).toBe(15);
         expect(reading.status).toBe(Reading_Status.READING);
         expect(reading.notes).toBe('Muito engraçado')

@@ -5,7 +5,7 @@ import { IUserRepository } from "../repositories/IUserRepository";
 
 
 function generateId(): string {
-        return Math.random().toString(36).substring(2, 10); // 8 caracteres
+        return Math.random().toString(36).substring(2, 10); 
     }
 
 export class AddReading{
@@ -23,15 +23,12 @@ export class AddReading{
     }): Promise<Readings> {
     const { id_user, id_manga, current_chapter, notes } = params;
 
-    // Verifica usuário
     const user = await this.userRepository.findById(id_user);
     if (!user) throw new Error("User not found");
 
-    // Verifica mangá
     const manga = await this.mangaRepository.findById(id_manga);
     if (!manga) throw new Error("Manga not found");
 
-    // Procura leitura existente
     const existingReading = await this.readingRepository.findByUserAndManga(
         id_user,
         id_manga
@@ -45,7 +42,6 @@ export class AddReading{
     const progress = (current_chapter / manga.total_chapters) * 100;
 
     if (existingReading) {
-      // Atualiza leitura existente via métodos da entidade
         existingReading.updateProgress(current_chapter, progress, status);
         if (notes) existingReading.updateNotes(notes);
 
@@ -53,7 +49,6 @@ export class AddReading{
         return existingReading;
     }
         
-    // Cria nova leitura
     const newReading = Readings.create(
         generateId(),
         id_user,

@@ -27,7 +27,7 @@ export class UpdateUser {
         user.id,
         newNickname,
         newEmail,
-        user.senha, // Password is not updated here for security reasons
+        user.password, // Password is not updated here for security reasons
         );
 
         await this.userRepository.update(updatedUser);

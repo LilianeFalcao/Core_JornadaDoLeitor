@@ -7,14 +7,14 @@ export class User{
         readonly id: string,
         readonly nickname: Nickname,
         readonly email: Email,
-        readonly senha: Password
+        readonly password: Password
     ){  }
     static create(
         id: string,
         nickname: Nickname,
         email: Email,
-        senha: Password
+        password: Password
     ): User {
-        return new User(id, nickname, email, senha)
+        return new User(id, nickname, email, password)
     }
 }

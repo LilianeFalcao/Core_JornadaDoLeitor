@@ -7,13 +7,10 @@ export class ListReadingByStatus {
     async execute(params: { status: Reading_Status }): Promise<Readings[]> {
         const { status } = params;
 
-        // Busca leituras pelo status
         const readings = await this.readingRepository.findByStatus(status);
-
         if (!readings || readings.length === 0) {
             throw new Error(`No readings found with status: ${status}`);
         }
-
         return readings;
     }
 }

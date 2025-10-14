@@ -2,6 +2,8 @@ import { IMangasRepository } from "../../domain/repositories/IMangasRepository";
 import { Mangas } from "../../domain/entity/Mangas";
 
 export class MockMangasRepository implements IMangasRepository{
+    private static instance: MockMangasRepository;
+
     private mangas: Mangas[] = [
     Mangas.create(
         "1",
@@ -28,6 +30,13 @@ export class MockMangasRepository implements IMangasRepository{
         686
     ),
     ];
+
+    public static getInstance(): MockMangasRepository{
+        if(!MockMangasRepository.instance){
+            MockMangasRepository.instance = new MockMangasRepository();
+        }
+        return MockMangasRepository.instance;
+    }
 
     async findByAuthorName(author_name: string): Promise<Mangas[]> {
         return this.mangas.filter( 

@@ -3,6 +3,8 @@ import { Readings } from "../../domain/entity/Readings";
 import { Reading_Status } from "../../domain/entity/Readings";
 
 export class MockReadingsRepository implements IReadingsRepository {
+    private static instance: MockReadingsRepository;
+
     private readings: Readings[] = [];
 
     async save(reading: Readings): Promise<void>{
@@ -41,6 +43,14 @@ export class MockReadingsRepository implements IReadingsRepository {
         );
 
         return reading || null;
+    }
+
+    
+    public static getInstance(): MockReadingsRepository{
+        if(!MockReadingsRepository.instance){
+            MockReadingsRepository.instance = new MockReadingsRepository();
+        }
+        return MockReadingsRepository.instance;
     }
     
 }

@@ -1,12 +1,12 @@
 import { Email } from "../../../domain/value-objects/Email"
 
 describe("Email", () => {
-    it('Deve criar um e-mail válido', () => {
+    it('You must create a valid email address.', () => {
         const email = Email.create('test@exemplo.com')
         expect(email.value).toBe("test@exemplo.com")
     })
 
-    it('Gerar erro para e-mail inválido', () => {
-        expect(() => Email.create('email-invalido')).toThrow()
+    it('Generate error for invalid email', () => {
+        expect(() => Email.create('invalid email')).toThrow()
     })
 })
